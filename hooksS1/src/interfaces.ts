@@ -5,21 +5,21 @@
 */
 
 export interface IState {
-    episodes: Array<IEpisode>;
-    favourites: Array<IEpisode>;
+    episodes: IEpisode[]
+    favourites: IEpisode[]
 }
 
 export interface IAction {
-    type: string;
-    payload: IEpisode[] | [] | any;
+    type: string
+    payload: IEpisode[] | [] | any
 }
 
 export interface IEpisode {
-    airdate: string,
-    airstamp: string,
-    airtime: string,
-    id: number,
-    image: { medium: string, original: string }
+    airdate: string
+    airstamp: string
+    airtime: string
+    id: number
+    image: { medium: string; original: string }
     name: string
     number: number
     runtime: number
@@ -31,8 +31,8 @@ export interface IEpisode {
 export type Dispatch = React.Dispatch<IAction>
 
 export interface IEpisodeProps {
-    episodes: Array<IEpisode>
-    store: {state: IState, dispatch: any}
-    toggleFavAction: (state: IState, dispatch: IAction, episode: IEpisode) => IAction,
-    favourites: Array<IEpisode>
-  }
+    episodes: IEpisode[]
+    store: { state: IState; dispatch: any }
+    toggleFavAction: (state: IState, dispatch: IAction, episode: IEpisode) => IAction
+    favourites: IEpisode[]
+}

@@ -2,12 +2,13 @@ import { IAction, IEpisode, IState } from './interfaces'
 
 export const fetchDataAction = async (dispatch: any) => {
     const data = await fetch(
-        'https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes'
+        'https://api.imfootball.io/news/index?langId=de&page=1'
     )
     const dataJSON = await data.json()
+    console.log('data -', dataJSON)
     return dispatch({
         type: 'FETCH_DATA',
-        payload: dataJSON._embedded.episodes,
+        payload: dataJSON,
     })
 }
 

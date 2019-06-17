@@ -1,9 +1,7 @@
-import { IAction, IEpisode, IState } from './interfaces'
+import { IAction, INew, IState } from './interfaces'
 
 export const fetchDataAction = async (dispatch: any) => {
-    const data = await fetch(
-        'https://api.imfootball.io/news/index?langId=de&page=1'
-    )
+    const data = await fetch('https://api.imfootball.io/news/index?langId=de&page=1')
     const dataJSON = await data.json()
     console.log('data -', dataJSON)
     return dispatch({
@@ -12,23 +10,21 @@ export const fetchDataAction = async (dispatch: any) => {
     })
 }
 
-export const toggleFavAction = (state: IState, dispatch: any, episode: IEpisode): IAction => {
-    const episodeInFav: boolean = state.favourites.includes(episode)
-    console.log(episodeInFav)
+export const toggleFavAction = (state: IState, dispatch: any, oneNew: INew): IAction => {
+    const oneNewInFav: boolean = state.favourites.includes(oneNew)
+    console.log(oneNewInFav)
 
     let dispatchObj = {
         type: 'ADD_FAV',
-        payload: episode,
+        payload: oneNew,
     }
 
-    if (episodeInFav) {
-        const favWithoutEpisode: any = state.favourites.filter(
-            (fav: IEpisode) => fav.id !== episode.id
-        )
+    if (oneNewInFav) {
+        const favWithoutNews: any = state.favourites.filter((fav: INew) => fav.id !== oneNew.id)
 
         dispatchObj = {
             type: 'REMOVE_FAV',
-            payload: favWithoutEpisode,
+            payload: favWithoutNews,
         }
     }
 

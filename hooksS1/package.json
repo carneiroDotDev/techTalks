@@ -27,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --max-warnings=0",
-    "type-check": "tsc ./src/*{.tsx,ts} --noEmit --jsx react"
+    "type-check": "tsc -p tsconfig.json --noEmit"
   },
   "eslintConfig": {
     "extends": "react-app"

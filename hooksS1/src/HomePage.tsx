@@ -2,20 +2,20 @@ import React from 'react'
 import { Store } from './Store'
 import './index.css'
 import { fetchDataAction, toggleFavAction } from './Actions'
-import { IEpisodeProps } from './interfaces'
+import { INewProps } from './interfaces'
 
-const EpisodesList = React.lazy<any>(() => import('./EpisodesList'))
+const NewsList = React.lazy<any>(() => import('./NewsList'))
 
 export default function HomePage() {
     const { state, dispatch } = React.useContext(Store)
 
     React.useEffect(() => {
-        state.episodes.length === 0 && fetchDataAction(dispatch)
+        state.News.length === 0 && fetchDataAction(dispatch)
         console.log('useEffect')
-    }, [state.episodes, dispatch])
+    }, [state.News, dispatch])
 
-    const props: IEpisodeProps = {
-        episodes: state.episodes,
+    const props: INewProps = {
+        news: state.News,
         toggleFavAction,
         favourites: state.favourites,
         store: { state, dispatch },
@@ -23,8 +23,8 @@ export default function HomePage() {
 
     return (
         <React.Suspense fallback={<div> Loadding ... </div>}>
-            <section className="episodeLayout">
-                <EpisodesList {...props} />
+            <section className="oneNewLayout">
+                <NewsList {...props} />
             </section>
         </React.Suspense>
     )

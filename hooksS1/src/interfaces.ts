@@ -5,34 +5,32 @@
 */
 
 export interface IState {
-    episodes: IEpisode[]
-    favourites: IEpisode[]
+    News: INew[]
+    favourites: INew[]
 }
 
 export interface IAction {
     type: string
-    payload: IEpisode[] | [] | any
+    payload: INew[] | [] | any
 }
 
-export interface IEpisode {
-    airdate: string
-    airstamp: string
-    airtime: string
-    id: number
-    image: { medium: string; original: string }
-    name: string
-    number: number
-    runtime: number
-    season: number
-    summary: string
+export interface INew {
+    headline: string
+    id: string
+    imageUrl: string
+    origin: string
+    publishedAt: string
+    subHeadline: string
+    tags: any
+    type: string
     url: string
 }
 
 export type Dispatch = React.Dispatch<IAction>
 
-export interface IEpisodeProps {
-    episodes: IEpisode[]
+export interface INewProps {
+    news: INew[]
     store: { state: IState; dispatch: any }
-    toggleFavAction: (state: IState, dispatch: IAction, episode: IEpisode) => IAction
-    favourites: IEpisode[]
+    toggleFavAction: (state: IState, dispatch: IAction, oneNew: INew) => IAction
+    favourites: INew[]
 }

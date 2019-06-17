@@ -13,14 +13,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.episodeLayout {
+.oneNewBox {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  min-width: 100vh;
+  margin: 20px;
+  max-width: 100vh;
+  justify-content: center;
 }
 
-.episodeBox {
+.imgStyle {
+  max-width: 300px;
+  max-height: 200px;
+}
+
+.newCard {
   padding: .5rem;
+  max-width: 300px;
 }
 
 .header{

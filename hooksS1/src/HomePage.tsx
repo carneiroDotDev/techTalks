@@ -12,7 +12,7 @@ export default function HomePage() {
     React.useEffect(() => {
         state.News.length === 0 && fetchDataAction(dispatch)
         console.log('useEffect')
-    }, [state.News, dispatch])
+    })
 
     const props: INewProps = {
         news: state.News,

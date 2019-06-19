@@ -6,8 +6,6 @@ const initialState: IState = {
     favourites: [],
 }
 
-export const Store = React.createContext<IState | any>(initialState)
-
 function reducer(state: IState, action: IAction): IState {
     switch (action.type) {
         case 'FETCH_DATA':
@@ -20,6 +18,8 @@ function reducer(state: IState, action: IAction): IState {
             return state
     }
 }
+
+export const Store = React.createContext<IState | any>(initialState)
 
 export function StoreProvider({ children }: JSX.ElementChildrenAttribute): JSX.Element {
     const [state, dispatch] = React.useReducer(reducer, initialState)
